@@ -16,6 +16,14 @@ public class Tarefa {
     private boolean importante;
     private boolean feito;
     
+    public Tarefa(int id, String titulo, String descricao, boolean urgente, boolean importante, boolean feito) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.urgente = urgente;
+        this. importante = importante;
+        this.feito = feito;
+    }
 
     /**
      * @return the id
