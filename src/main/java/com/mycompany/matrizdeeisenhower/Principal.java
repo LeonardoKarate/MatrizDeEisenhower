@@ -4,6 +4,8 @@
 
 package com.mycompany.matrizdeeisenhower;
 
+import com.mycompany.matrizdeeisenhower.visao.FrmMenuPrincipal;
+
 /**
  *
  * @author leona
@@ -11,6 +13,8 @@ package com.mycompany.matrizdeeisenhower;
 public class Principal {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+        FrmMenuPrincipal objetoTela = new FrmMenuPrincipal();
+        objetoTela.setVisible(true);
     }
 }
