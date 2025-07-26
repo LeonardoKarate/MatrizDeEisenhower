@@ -4,17 +4,26 @@
  */
 package com.mycompany.matrizdeeisenhower.visao;
 
+import com.mycompany.matrizdeeisenhower.Tarefa;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+
 /**
  *
  * @author leona
  */
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 
+    private Tarefa objetoTarefa;
+
     /**
      * Creates new form FrmMenuPrincipal
      */
     public FrmMenuPrincipal() {
         initComponents();
+        this.objetoTarefa = new Tarefa();
+        this.carregaLista();
     }
 
     /**
@@ -26,21 +35,114 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPaneNaoImportanteeNaoUrgente = new javax.swing.JScrollPane();
+        jListNaoImportanteeNaoUrgente = new javax.swing.JList<>();
+        jScrollPaneImportanteeUrgente = new javax.swing.JScrollPane();
+        jListImportanteeUrgente = new javax.swing.JList<>();
+        jScrollPaneImportanteeNaoUrgente = new javax.swing.JScrollPane();
+        jListImportanteeNaoUrgente = new javax.swing.JList<>();
+        jScrollPaneNaoImportanteeUrgente = new javax.swing.JScrollPane();
+        jListNaoImportanteeUrgente = new javax.swing.JList<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jCheckBoxCriarTarefa = new javax.swing.JCheckBoxMenuItem();
+        jMenuFeitos = new javax.swing.JMenu();
+
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jScrollPaneNaoImportanteeNaoUrgente.setViewportView(jListNaoImportanteeNaoUrgente);
+
+        jScrollPaneImportanteeUrgente.setViewportView(jListImportanteeUrgente);
+
+        jScrollPaneImportanteeNaoUrgente.setViewportView(jListImportanteeNaoUrgente);
+
+        jScrollPaneNaoImportanteeUrgente.setViewportView(jListNaoImportanteeUrgente);
+
+        jMenu1.setText("Menu");
+
+        jCheckBoxCriarTarefa.setSelected(true);
+        jCheckBoxCriarTarefa.setText("Criar Tarefa");
+        jMenu1.add(jCheckBoxCriarTarefa);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenuFeitos.setText("Feitos");
+        jMenuBar1.add(jMenuFeitos);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(212, 212, 212)
+                .addComponent(jScrollPaneImportanteeNaoUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPaneNaoImportanteeUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneNaoImportanteeNaoUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jScrollPaneImportanteeUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(202, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPaneImportanteeNaoUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneNaoImportanteeNaoUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneNaoImportanteeUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jScrollPaneImportanteeUrgente, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(143, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void carregaLista() {
+          DefaultListModel<String> modeloIU = new DefaultListModel<>();
+          DefaultListModel<String> modeloInU = new DefaultListModel<>();
+          DefaultListModel<String> modelonIU = new DefaultListModel<>();
+          DefaultListModel<String> modelonInU = new DefaultListModel<>();
+
+        ArrayList<Tarefa> minhaLista = objetoTarefa.getAllTarefas();
+        jListImportanteeUrgente.setModel(modeloIU);
+        jListImportanteeNaoUrgente.setModel(modeloInU);
+        jListNaoImportanteeNaoUrgente.setModel(modelonIU);
+        jListNaoImportanteeUrgente.setModel(modelonInU);
+
+        for(Tarefa t : minhaLista) {
+            if(!t.isFeito()) {
+                if(t.isImportante() && t.isUrgente()) {
+                    modeloIU.addElement(t.getTitulo());
+                }
+                else if(t.isImportante() && !t.isUrgente()) {
+                    modeloInU.addElement(t.getTitulo());
+                }
+                else if(!t.isImportante() && t.isUrgente()) {
+                    modelonIU.addElement(t.getTitulo());
+                }
+                else {
+                    modelonInU.addElement(t.getTitulo());
+                }
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -78,5 +180,18 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem jCheckBoxCriarTarefa;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jListImportanteeNaoUrgente;
+    private javax.swing.JList<String> jListImportanteeUrgente;
+    private javax.swing.JList<String> jListNaoImportanteeNaoUrgente;
+    private javax.swing.JList<String> jListNaoImportanteeUrgente;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuFeitos;
+    private javax.swing.JScrollPane jScrollPaneImportanteeNaoUrgente;
+    private javax.swing.JScrollPane jScrollPaneImportanteeUrgente;
+    private javax.swing.JScrollPane jScrollPaneNaoImportanteeNaoUrgente;
+    private javax.swing.JScrollPane jScrollPaneNaoImportanteeUrgente;
     // End of variables declaration//GEN-END:variables
 }
