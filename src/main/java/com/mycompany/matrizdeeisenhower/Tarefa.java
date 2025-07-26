@@ -4,6 +4,9 @@
  */
 package com.mycompany.matrizdeeisenhower;
 
+import com.mycompany.matrizdeeisenhower.dao.TarefaDAO;
+import java.util.ArrayList;
+
 /**
  *
  * @author leona
@@ -15,6 +18,7 @@ public class Tarefa {
     private boolean urgente;
     private boolean importante;
     private boolean feito;
+    private TarefaDAO dao;
     
     public Tarefa(int id, String titulo, String descricao, boolean urgente, boolean importante, boolean feito) {
         this.id = id;
@@ -23,8 +27,12 @@ public class Tarefa {
         this.urgente = urgente;
         this. importante = importante;
         this.feito = feito;
+        this.dao = new TarefaDAO();
     }
-
+    
+    public Tarefa() {
+        this(0,"","", false,false,false);
+    }
     /**
      * @return the id
      */
@@ -100,6 +108,10 @@ public class Tarefa {
      */
     public void setFeito(boolean feito) {
         this.feito = feito;
+    }
+    
+    public ArrayList<Tarefa> getAllTarefas() {
+        return dao.getAll();
     }
     
 }
